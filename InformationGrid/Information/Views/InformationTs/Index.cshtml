@@ -1,0 +1,96 @@
+﻿@using Syncfusion.EJ2
+
+@model IEnumerable<Information.Models.InformationT>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 style="padding-left:20%;color:darkblue;">List</h1>
+
+<p style="padding-left:20%">
+    <a asp-action="Create" class="btn btn-primary text-white">Create</a>
+</p>
+
+<div style="padding-left:20%">
+    @*<ejs-grid id="Grid" dataSource="@ViewBag.Info"  allowPaging="true">*@@*allowSorting="true" allowFiltering="true" dataBound="databound" allowGrouping="true" toolbar="@(new List<string>() {"Add", "Edit", "Update", "Delete" })"*@
+        @*<e-grid-pagesettings pageSize="10"></e-grid-pagesettings>*@
+        @*<e-grid-editSettings allowAdding="true" allowDeleting="true" allowEditing="true" mode="Normal"></e-grid-editSettings>*@
+        @*<e-grid-columns>
+            <e-grid-column field = "Name" headerText = "Name" textAlign="Right" width="90"></e-grid-column>
+            <e-grid-column field = "Gender" headerText = "Gender" textAlign="Right" width="90"></e-grid-column>
+            <e-grid-column field = "Age" headerText = "Age" textAlign="Right" format="C2" editType="numericedit" width="70"></e-grid-column>
+            <e-grid-column field = "City" headerText = "City" textAlign="Right" width="90"></e-grid-column>
+        </e-grid-columns>
+    </ejs-grid>*@
+
+    <ejs-grid id="Grid" dataSource="(IEnumerable<object>)@ViewBag.Info">
+                    <e-grid-columns> 
+                        <e-grid-column field="Id" headerText="Id1" textAlign="Right" width="70"></e-grid-column>
+                        <e-grid-column field="Name" headerText="Name1" textAlign="Right" width="100"></e-grid-column>
+                        <e-grid-column field="Gender" headerText="Gender1" textAlign="Right" width="100"></e-grid-column>
+                        <e-grid-column field="Age" headerText="Age1"  textAlign="Right" width="100"></e-grid-column>
+@*                        <e-grid-column field="City" headerText="City1"  textAlign="Right"width="100" ></e-grid-column>                      
+*@                    </e-grid-columns>
+                </ejs-grid>
+</div>
+
+
+
+@*<div style="padding-left:20%">
+
+      @Html.EJS().Grid("Grid").DataSource((IEnumerable<Information.Models.InformationT>)Model).Columns(
+        col => {
+            col.Field("Name").HeaderText("Name").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+            col.Field("Gender").HeaderText("Gender").Width("100").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+            col.Field("Age").HeaderText("Age").Width("80").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+            col.Field("City").HeaderText("City").Width("120").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+        }
+    ).AllowPaging(true).AllowSorting(true).AllowFiltering(true).AllowGrouping(true).PageSettings(page => page.PageSize(10)).Render()
+</div>*@
+  
+@*
+<table class="table" style="padding-left:20%">
+    <thead style="padding-left:20%">
+        <tr style="padding-left:20%">
+            <th style="padding-left:20%">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th style="padding-left:20%">
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th style="padding-left:20%">
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th style="padding-left:20%">
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+            </th>
+        </tr>
+    </thead>
+    <tbody style="padding-left:20%">
+@foreach (var item in Model) {
+        <tr style="padding-left:20%">
+            <td style="padding-left:20%">
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td style="padding-left:20%">
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td style="padding-left:20%">
+            <td style="padding-left:20%">
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td style="padding-left:20%">
+                @Html.DisplayFor(modelItem => item.CityNavigation.CityName)
+            </td>
+            <td style="padding-left:20%">
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>*@
